@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Property Form Filler</title>
+    <link href="popup.css" rel="stylesheet" type="text/css">
+   </head>
+  <body>
+    <div>
+      <div id="search-details-missing" class="search-details-missing">
+        No search terms captured yet.
+      </div>
+      <div id="search-details" class="search-details">
+        <span id="term"></span><br>
+      </div>
+    	<div class="messages" id="messages"></div>
+      <div id="promo" class="promo">
+        <a href="#" id="toggle-more-info">more info</a><br><br>
+      </div>
+      <div id="more-info" class="more-info">
+        <br>
+        <b>Supported sites : </b>
+        <ul id="site-list" class="site-list">
+        </ul>
+        <b>Preferences : </b><br>
+        <div class="preferences">
+          <input type="checkbox" id="autoPaste" name="autoPaste" value="on" checked>Auto-populate search boxes</input><br>
+          <input type="checkbox" id="clear" name="clear">Clear</input>
+        </div>
+        <div id="promo" class="promo footer">
+          Search Aid
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../logic/global_utils.js"></script>
+    <script type="text/javascript" src="../logic/site_handlers.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+  </body>
+</html>

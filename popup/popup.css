@@ -1,0 +1,37 @@
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 0px;
+  padding: 10px;
+  width: 400px;
+  color: #333;
+}
+
+.promo {
+  font-size: 11px;
+  float: right;
+  text-align: right;
+  line-height: 0.7;
+}
+
+.site-list {
+  margin-top: 4px;
+  list-style-type: square;
+  font-size: 11px;
+}
+
+.more-info {
+  display : none;  
+}
+
+.preferences {
+  margin-top: 4px;
+}
+
+.footer {
+  font-weight: bold;
+  font-style: italic;
+  color: firebrick;
+  text-shadow: 2px 1px #CCC;
+}
