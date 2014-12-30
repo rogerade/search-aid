@@ -17,7 +17,7 @@ SearchApp.main = {
       }
     });
   },
-  "getPropertyDetails" : function (params, callbackParams, callback) {
+  "getSearchDetails" : function (params, callbackParams, callback) {
     console.log('main.getSiteHandler started');
     SearchApp.main.getSiteHandler(params.tabId, function(siteHandler, bgPage) {
       if (siteHandler && siteHandler.searchPage && siteHandler.searchPage.getterScript) {
@@ -30,8 +30,8 @@ SearchApp.main = {
     });
     console.log('main.getSiteHandler finished');
   },
-  "setPropertyDetails" : function(tabId, callback) {
-    console.log('main.setPropertyDetails started');
+  "setSearchDetails" : function(tabId, callback) {
+    console.log('main.setSearchDetails started');
     SearchApp.main.getSiteHandler(tabId, function(siteHandler) {
       SearchApp.main.getData("data", function(items) {
         if (items)
@@ -41,13 +41,13 @@ SearchApp.main = {
             chrome.tabs.executeScript(tabId, {code: "console.log('"+siteHandler.id+" setter handler started');"});
             chrome.tabs.executeScript(tabId, {code: "try{"+siteHandler.setterScript+"}catch(err) {console.log('Error with setterScript: %s',err.message)}"}, function(result){
               chrome.tabs.executeScript(tabId, {code: "console.log('"+siteHandler.id+" setter handler finished');"});
-              console.log('main.setPropertyDetails "%s"', result[0]);
+              console.log('main.setSearchDetails "%s"', result[0]);
             });
           }
         }
       });
     });
-    console.log('main.setPropertyDetails finished');
+    console.log('main.setSearchDetails finished');
   },
   "saveData" : function(tableName, parameters) {
     if (parameters) {
@@ -96,7 +96,7 @@ SearchApp.main = {
     chrome.tabs.executeScript(tabId, {file: "logic/global_utils.js"});
   },
   "copySiteDetails" : function(params) {
-    SearchApp.main.getPropertyDetails(params, null, function(parameters) {
+    SearchApp.main.getSearchDetails(params, null, function(parameters) {
       if (parameters) {
         chrome.runtime.sendMessage({"api":"main-persist-search-details", "parameters": parameters});
       }
@@ -116,7 +116,7 @@ chrome.runtime.onMessage.addListener(
         SearchApp.main.copySiteDetails(request.parameters);
         break;
       case 'main-paste' :
-        SearchApp.main.setPropertyDetails(request.parameters.tabId);
+        SearchApp.main.setSearchDetails(request.parameters.tabId);
         break;
       case 'main-get-data' :
         SearchApp.main.getData(request.parameters, sendResponse);

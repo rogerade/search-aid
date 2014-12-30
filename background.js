@@ -63,7 +63,7 @@ if (!SearchApp.background) {
             }
           }
           if (!result.siteHandler) {
-            console.log('Search Aid : Site handler not found');
+            console.log('Search Aid : Site not supported');
           }
           return result;
       }
